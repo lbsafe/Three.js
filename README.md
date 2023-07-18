@@ -13,7 +13,7 @@
 
 ## 설치 및 경로 설정
 **:one: NPM 설치 방식**   
-1. npm 명령어를 이용하여 Three.js를 설치한다.
+1. npm 명령어를 이용하여 Three.js를 설치한다. (node.js 설치 필요)
 
     ```js
     npm install three
@@ -72,8 +72,9 @@
 
     <script type="importmap">
     {
-    "imports": {
-        "three": "https://unpkg.com/three@<version>/build/three.module.js"
+        "imports": {
+        "three": "https://unpkg.com/three@<version>/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@<version>/examples/jsm/"
         }
     }
     </script>
@@ -97,15 +98,15 @@ build 폴더 내부의 three.module.js 파일을 프로젝트 폴더 내부로 �
     ```html
     <!DOCTYPE html>
     <html>
-    <head>
-        <title>Document</title>
-        <script src="./파일경로/three.module.js"></script>
-    </head>
-    <body>
-        <script type="module" defer>
-            import * as THREE from './src/js/three.module.js';
-        </script>
-    </body>
+        <head>
+            <title>Document</title>
+            <script src="./파일경로/three.module.js"></script>
+        </head>
+        <body>
+            <script type="module" defer>
+                import * as THREE from './src/js/three.module.js';
+            </script>
+        </body>
     </html>
     ```
 
