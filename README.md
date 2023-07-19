@@ -3,7 +3,7 @@
 <p align="center"><img src="https://github.com/lbsafe/Three.js/assets/65703793/4425315d-3ede-4984-a649-c282447c313d" alt="three" width="300px"></p>
 
 ## Three.js 에 대하여
->**Three.js는 웹 브라우저에서 3D 그래픽을 렌더링하는 자바스크립트 라이브러리**이다. WebGL을 기반으로 동작하며 3D 모델링과 렌더링, 애니메이션 등을 구현할 수 있다. 스크롤, 클릭, 키보드 입력 등의 이벤트를 통해 오브젝트와 인터랙션을 표현할 수 있으며, 뿐만 아니라 블렌더, Cinema 4D 등의 3D 모델링 툴을 이용하여 생성한 오브젝트를 import하여 작업을 진행할 수 있습니다.
+>**Three.js는 웹 브라우저에서 3D 그래픽을 렌더링하는 자바스크립트 라이브러리**이다. WebGL을 기반으로 동작하며 3D 모델링과 렌더링, 애니메이션 등을 구현할 수 있다. 스크롤, 클릭, 키보드 입력 등의 이벤트를 통해 오브젝트와 인터랙션을 표현할 수 있으며, 뿐만 아니라 블렌더, Cinema 4D 등의 3D 모델링 툴을 이용하여 생성한 오브젝트를 import하여 작업을 진행할 수 있다.
 
 **:question: WebGL이란**
 * 웹 브라우저 상에 2D 및 3D 그래픽을 표현하기 위한 JavaScript API
@@ -29,7 +29,7 @@
 
     **:warning:경로 재정의**
     >Three.js를 불러오기 위해서는 폴더의 경로를 지정해주어야 한다. 하지만 Three.js의 다양한 모듈(controls, loaders 등)을 사용할 때도, 모듈 파일마다 three의 경로를 재정의 해주어야 한다. 그렇지 않으면 three의 위치를 찾지 못해 아래와 같은 오류가 발생하게 된다.   
-    -> 오류를 방지하고, 경로를 용이하게 관리하기 위해서 **importmap**을 사용합니다.
+    -> 오류를 방지하고, 경로를 용이하게 관리하기 위해서 **importmap**을 사용한다.
 
     <p align="center"><img src="https://github.com/lbsafe/Three.js/assets/65703793/e89e586c-0166-427a-863b-b1d6aacd9b8c" alt="three err" width="100%"></p>
 
