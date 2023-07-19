@@ -153,7 +153,7 @@ if (WebGL.isWebGLAvailable()) {
   document.body.appendChild(warning)
 }
 ```
-:link:[webGL][WebGL] : WebGL 지원 브라우저
+:link:[WebGL][WebGL] : WebGL 지원 브라우저
 
 [WebGL]: https://caniuse.com/?search=WebGL "WebGL"
 
