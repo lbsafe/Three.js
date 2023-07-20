@@ -156,5 +156,88 @@ if (WebGL.isWebGLAvailable()) {
 :link:[WebGL][WebGL] : WebGL 지원 브라우저
 
 [WebGL]: https://caniuse.com/?search=WebGL "WebGL"
+***
 
+## 기본 구성 요소
+**:one: Scene**   
+>Three.js의 가장 기본이 되는 객체로, 모든 3D 개체가 배치되는 공간이다.    
+화면에 보여질 모든 요소들은 Scene에 추가되어야 한다.
+
+```js
+const scene = new THREE.Scene();
+scene.add(element);
+```
+
+**:two: Camera**
+>Scene을 보는 시점을 정의한다. Three.js에서는 여러 카메라를 제공하며,   
+대표적으로 **PerspectiveCamera**와 **OrthographicCamera**를 사용한다.
+
+* **PerspectiveCamera**
+
+    원근감을 적용하여 객체를 투영하는 카메라로, 3D 공간감을 표현
+
+    ```js
+    const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+    ```
+
+    * **fov**: 시야각, 커질 수록 화면에  많은 영역을 출력   
+        기본값은 50, 사람의 시야와 유사한 45~75 사이 값 사용
+    
+    * **aspect**: 카메라의 종횡비, 가로와 세로의 비율   
+    보통 `window.innerWidth / window.innerHeight` 사용
+
+    * **near, far**: 카메라로 볼 수 있는 최소, 최대의 거리   
+    범위 밖은 렌더링 되지 않습니다.
+
+* **OrthographicCamera**
+
+    원근감 없이 평면적인 투영을 적용하는 카메라
+
+    ```js
+    const camera = new THREE.OrthographicCamera(left, right, top, bottom, near, far);
+    ```
+
+    * **left**, **right**, **top**, **bottom**: 카메라가 볼 수 있는 영역의 좌표
+    * **near**, **far**: 카메라로 볼 수 있는 최소, 최대 거리
+
+**:three: Renderer**
+>Scene과 Camera를 연결하여 실제 화면에 보여지는 이미지를 생성한다. canvas 요소를 생성하며, HTML 문서에 추가한 후, render 메서드를 이용하여 scene과 camera를 연결하여 3D 그래픽을 출력한다.
+
+```js
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+// 화면 렌더링
+renderer.render(scene, camera);
+```
+
+* :pushpin: 특정 캔버스 요소에 화면을 렌더링 하기 위해서 렌더러의 속성값으로 해당 캔버스 요소를 전달해야 한다.
+
+    ```js
+    <canvas id="canvasBox"></canvas>
+
+    const $canvas = document.getElementById('canvasBox');
+
+    const renderer = new THREE.WebGLRenderer({
+        canvas: $canvas, antialias: true
+    });
+    ```
+    * **canvas**: 특정 캔버스를 설정
+    * **antialias**: 계단현상 방지
+
+<br>
+
+* :pushpin: 캔버스의 스타일 속성을 주어 화면의 크기를 조정할 수 있다. 화면의 깨짐 현상을 방지하고 비율을 유지하기 위하여 카메라와 렌더러의 속성값을 캔버스의 크기에 맞추어 변경해주어야 한다.
+
+    ```js
+    // 캔버스 스타일 속성 부여
+    <canvas id="canvasBox" style="border: 1px solid red; width: 500px; height: 800px;"></canvas>
+
+    // 카메라 사이즈
+    const camera = new THREE.PerspectiveCamera(50, $canvas.clientWidth / $canvas.clientHeight, 0.1, 1000);
+
+    // 렌더러 사이즈
+    renderer.setSize($canvas.clientWidth, $canvas.clientHeight);
+    ```
 ***
