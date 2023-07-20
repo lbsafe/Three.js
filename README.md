@@ -187,7 +187,7 @@ scene.add(element);
     보통 `window.innerWidth / window.innerHeight` 사용
 
     * **near, far**: 카메라로 볼 수 있는 최소, 최대의 거리   
-    범위 밖은 렌더링 되지 않습니다.
+    범위 밖은 렌더링 되지 않는다.
 
 * **OrthographicCamera**
 
@@ -225,8 +225,6 @@ renderer.render(scene, camera);
     ```
     * **canvas**: 특정 캔버스를 설정
     * **antialias**: 계단현상 방지
-
-<br>
 
 * :pushpin: 캔버스의 스타일 속성을 주어 화면의 크기를 조정할 수 있다. 화면의 깨짐 현상을 방지하고 비율을 유지하기 위하여 카메라와 렌더러의 속성값을 캔버스의 크기에 맞추어 변경해주어야 한다.
 
