@@ -165,6 +165,8 @@ if (WebGL.isWebGLAvailable()) {
 
 ```js
 const scene = new THREE.Scene();
+
+// scene.add() 로 요소 추가
 scene.add(element);
 ```
 
