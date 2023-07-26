@@ -142,8 +142,16 @@ import { OrbitControls } from '../node_modules/three/examples/jsm/controls/Orbit
 >Three.js는 WebGL을 기반으로 동작하기 때문에, 실행 환경이 WebGL을 지원하지 않는 경우 코드가 올바르게 동작하지 않을 수 있다.
 
 ```js
+// NPM
+import WebGL from '../../node_modules/three/examples/jsm/capabilities/WebGL.js'
+```
+```js
+// CDN
+import WebGL from 'three/addons/capabilities/WebGL.js';
+```
+```js
 import * as THREE from 'three'
-import WebGL from '<파일 경로>/webgl.js';
+import WebGL from '<파일 경로>/WebGL.js';
 
 if (WebGL.isWebGLAvailable()) {
   // 실행하려는 Three.js 코드를 작성한다.
