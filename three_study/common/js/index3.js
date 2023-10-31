@@ -42,12 +42,12 @@ if(WebGL.isWebGLAvailable()){
     // scene.add(obj2);
 
     // 원기동
-    const geo3 = new THREE.CylinderGeometry(0.5,0.7,1);
+    const geo3 = new THREE.CylinderGeometry(0.7,0.7,1,10);
     const obj3 = new THREE.Mesh(geo3, material);
     // scene.add(obj3);
 
     // 구
-    const geo4 = new THREE.SphereGeometry(1);
+    const geo4 = new THREE.SphereGeometry(0.7);
     const obj4 = new THREE.Mesh(geo4, material);
     // scene.add(obj4);
 
@@ -64,7 +64,7 @@ if(WebGL.isWebGLAvailable()){
     // 튜브
     const geo7 = new THREE.TorusGeometry(0.5,0.1);
     const obj7 = new THREE.Mesh(geo7, material);
-    scene.add(obj7)
+    scene.add(obj7);
 
     // 애니메이션
     function animate(){

@@ -341,3 +341,69 @@ window.addEventListener('resize',()=>{
 });
 ```
 ***
+## Mesh
+
+> Three.js에서 3차원의 객체 Mesh의 2가지 인자를 살펴본다.
+
+```js
+const box = new THREE.Mesh(geometry, meterial);
+```
+
+**:one: Geometry - 형태**
+
+* 육면체
+    ```js
+    const geo1 = new THREE.BoxGeometry(1,1,1);
+    // x, y, z의 평행 변의 길이
+    const obj1 = new THREE.Mesh(geo1, material); 
+    scene.add(obj1);
+    ```
+* 원뿔
+    ```js
+    const geo2 = new THREE.ConeGeometry(0.5,1,20);
+    // 반지름, 높이, 분할면 갯수(기본 32)
+    const obj2 = new THREE.Mesh(geo2, material);
+    scene.add(obj2);
+    ```
+* 원기둥
+    ```js
+    const geo3 = new THREE.CylinderGeometry(0.5,0.7,1, 10);
+    // 윗면 반지름, 아랫면 반지름, 높이, 분할면 갯수
+    const obj3 = new THREE.Mesh(geo3, material);
+    scene.add(obj3);
+    ```
+* 구
+    ```js
+    const geo4 = new THREE.SphereGeometry(1);
+    // 반지름
+    const obj4 = new THREE.Mesh(geo4, material);
+    scene.add(obj4);
+    ```
+* 평면
+    ```js
+    const geo5 = new THREE.PlaneGeometry(1,1);
+    // 넓이, 높이
+    const obj5 = new THREE.Mesh(geo5, material);
+    scene.add(obj5);
+    ```
+* 원
+    ```js
+    const geo6 = new THREE.CircleGeometry(1,32);
+    // 반지름, 분할면 갯수
+    const obj6 = new THREE.Mesh(geo6, material);
+    scene.add(obj6);
+    ```
+* 튜브
+    ```js
+    const geo7 = new THREE.TorusGeometry(0.5,0.1);
+    // 중심부분 부터의 반지름, 튜브의 반경
+    const obj7 = new THREE.Mesh(geo7, material);
+    scene.add(obj7);
+    ```
+:link:[Three-Geometry][Three-Geometry] : Three.js Geometry 더보기
+
+[Three-Geometry]: https://threejs.org/docs/index.html#api/en/geometries/BoxGeometry "Three-Geometry"
+
+***
+
+**:two: Material - 재질**
