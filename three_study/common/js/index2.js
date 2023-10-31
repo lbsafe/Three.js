@@ -36,8 +36,8 @@ if(WebGL.isWebGLAvailable()){
 
     // 애니메이션
     function animate(){
-        // box.rotation.y += 0.01;
-        console.log(box.rotation.y);
+        box.rotation.y += 0.01;
+        // console.log(box.rotation.y);
         renderer.render(scene, camera);
         requestAnimationFrame(animate);
     }
