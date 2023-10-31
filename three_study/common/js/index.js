@@ -28,10 +28,10 @@ if(WebGL.isWebGLAvailable()){
     scene.add(light);
 
     const geometry = new THREE.BoxGeometry(1, 1, 1);
-    const meterial = new THREE.MeshStandardMaterial({
+    const material = new THREE.MeshStandardMaterial({
         color: 0x2e6ff2
     });
-    const box = new THREE.Mesh(geometry,meterial);
+    const box = new THREE.Mesh(geometry,material);
     scene.add(box);
 
 
