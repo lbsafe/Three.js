@@ -407,3 +407,50 @@ const box = new THREE.Mesh(geometry, meterial);
 ***
 
 **:two: Material - 재질**
+
+* 스텐다드 메테리얼 (MeshStandardMaterial)
+    > Unity나 Unreal 등 3D 어플리케이션에서 표준으로 채택하여 사용,   
+    물리 기반의 렌더링을 사용하여 빛에 의한 명암이 표현되고 다양한 질감을 나타내기 좋다.
+    ```js
+    const material_standard = new THREE.MeshStandardMaterial({
+        /* 일반적인 속성 */
+        color: 0x2e6ff2,
+        wireframe: true, // geometry의 형태 확인 가능
+        transparent: true, // 투명도
+        opacity: 0.5, // 투명도 조절
+        roughness: 0.2, // 거칠기
+        metalness: 0.7, // 금속성 표현
+        map:, // 텍스처 적용
+        side: THREE.FrontSide // 렌더링할 면을 결정 FrontSide(앞면-기본), BackSide(뒷면), DoubleSide(양면)
+    });
+    ```
+* 베이직 메테리얼 (MeshBasicMaterial)
+    >빛의 영향을 받지 않아서, Mesh의 출력을 확인하는 용도로 주로 쓰인다.
+    ```js
+    const material_basic = new THREE.MeshBasicMaterial({
+        color: 0x2e6ff2
+    });
+    ```
+* 피지컬 메테리얼 (MeshPhysicalMaterial)
+    >StandardMaterial의 확장 버전으로 고급 물리 기반의 렌더링을 제공   
+    -> 더 많은 물리적 특성 이용 가능
+    ```js
+    const material_physical = new THREE.MeshPhysicalMaterial({
+        /* 피지컬 메테리얼 속성 */
+        color: 0x2e6ff2,
+        clearcoat: 0.8, // 반투명 레이어 생성
+        clearcoatRoughness: 0.2 // 반투명 레이어 강도
+    });
+    ```
+* 퐁 메테리얼 (MeshPhongMaterial)
+    > 빛의 반사율 계산 단위로 인해 이름이 만들어짐,   
+    -> 광택 있는 표면을 표현 시 사용 (금속, 보석 등)
+    ```js
+    const material_phong = new THREE.MeshPhongMaterial({
+        /* 퐁 메테리얼 속성 */
+        color: 0x2e6ff2,
+        shininess: 100, // 물체의 광택의 정도 조정
+        specular: 0xffaaaa // 물체가 반사하는 빛의 색상 지정 가능
+    });
+    ```
+***
