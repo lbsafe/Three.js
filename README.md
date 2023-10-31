@@ -261,3 +261,83 @@ renderer.render(scene, camera);
     renderer.setSize($canvas.clientWidth, $canvas.clientHeight);
     ```
 ***
+
+## 애니메이션
+
+>애니메이션을 사용하기 위해서는 자바스크립트에서 제공하는 **requestAnimationFrame** 을 사용한다.
+
+**:one:** requestAnimationFrame 을 사용할 콜백함수를 선언한다.
+    
+* 브라우저가 다음 프레임을 렌더링하기 전에 반복적으로 animate를 호출한다.
+
+    ```js
+    function animate(){
+        requestAnimationFrame(animate);
+    }
+    animate();
+    ```
+
+**:two:** 애니메이션에 필요한 함수는 animate 내부에 작성해준다.
+
+* 브라우저가 다음 프레임을 렌더링하기 전에 반복적으로 animate를 호출한다.
+    
+    ```js
+    function animate(){
+        box.rotation.y += 0.01; // y축 기준으로 회전
+        console.log(box.rotation.y); // 변하는 값 확인
+        requestAnimationFrame(animate);
+    }
+    animate();
+    ```
+
+**:three:** animate 내부에 화면을 출력해주는 렌더링 함수 호출
+
+* 브라우저가 다음 프레임을 렌더링하기 전에 반복적으로 animate를 호출한다.
+    
+    ```js
+    function animate(){
+        box.rotation.y += 0.01;
+        console.log(box.rotation.y);
+        renderer.render(scene, camera); // 화면 출력 함수
+        requestAnimationFrame(animate);
+    }
+    animate();
+    ```
+***
+
+## 반응형 업데이트
+
+>화면이 리사이즈 되었을 때 카메라의 종횡비와 렌더러의 크기를 업데이트하여 반응형으로 만들어준다.
+
+**:one:** 카메라의 종횡비는 **aspect** 속성을 이용해서 업데이트 할 수 있다.
+```js
+window.addEventListener('resize',()=>{
+    // 1. 카메라의 종횡비
+    camera.aspect = window.innerWidth/window.innerHeight; // 카메라 속성 변경
+    camera.updateProjectionMatrix(); // 카메라 업데이트
+});
+```
+
+**:two:** 렌더러의 크기 속성을 변경 해준다.
+```js
+window.addEventListener('resize',()=>{
+    camera.aspect = window.innerWidth/window.innerHeight;
+    camera.updateProjectionMatrix();
+    // 2. 렌더러의 크기 변경
+    renderer.setSize(window.innerWidth, window.innerHeight);
+});
+```
+
+**:star: 반응형 업데이트 코드**
+```js
+// 리사이즈
+window.addEventListener('resize',()=>{
+    // 1. 카메라의 종횡비
+    camera.aspect = window.innerWidth/window.innerHeight;
+    camera.updateProjectionMatrix(); // 카메라 업데이트
+
+    // 2. 렌더러의 크기
+    renderer.setSize(window.innerWidth, window.innerHeight);
+});
+```
+***
