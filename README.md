@@ -18,6 +18,17 @@
     ```js
     npm install three
     ```
+    1. 특정 버전의 Three.js 설치 방법
+
+        ```js
+        npm install three@0.152.2
+        ```
+
+    2. Three.js 삭제 방법
+
+        ```js
+        npm uninstall three
+        ```
 
 2. three.js 모듈을 import 한다.
 
@@ -80,7 +91,7 @@
     </script>
 
     <script type="module">
-    import * as THREE from 'three';
+        import * as THREE from 'three';
         // 이곳에 Three.js 코드를 작성
 
     </script>
@@ -150,6 +161,7 @@ import WebGL from '../../node_modules/three/examples/jsm/capabilities/WebGL.js'
 import WebGL from 'three/addons/capabilities/WebGL.js';
 ```
 ```js
+// 사용법
 import * as THREE from 'three'
 import WebGL from '<파일 경로>/WebGL.js';
 
