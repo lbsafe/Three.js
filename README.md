@@ -343,11 +343,48 @@ window.addEventListener('resize',()=>{
 ***
 ## Mesh
 
-> Three.js에서 3차원의 객체 Mesh의 2가지 인자를 살펴본다.
+> Mesh란? Three.js에서 3차원의 객체 이다.
 
-```js
-const box = new THREE.Mesh(geometry, meterial);
-```
+* Mesh의 기본형태
+
+    ```js
+    const box = new THREE.Mesh(geometry, meterial);
+    ```
+* Mesh의 조작법
+
+    - :pushpin: AxesHelper 을 이용하여 좌표축 추가
+        ```js
+        const axesHelper = new THREE.AxesHelper(3); // 인자값은 좌표축의 크기
+        scene.add(axesHelper);
+        ```
+        <p align="center"><img src="https://github.com/lbsafe/Three.js/assets/65703793/f74e927e-54ec-42e7-a4d6-88572cf495cc" alt="three" width="200px"></p>
+
+    1. 위치
+
+        ```js
+        mesh.position.x = 2; // x축 이동
+        mesh.position.y = 1; // y축 이동
+        mesh.position.z = 0; // z축 이동
+        mesh.position.set(-1,0,0.5);  // 각 x,y,z 값을 인자로 갖는다.
+        ```
+
+    2. 회전
+
+        ```js
+        mesh.rotation.y = 360; // Three.js 회전은 도가 아닌 라디안 값이다.
+
+        // 아래와 같이 MathUtils.degToRad을 이용하여 원하는 각도를 넣어준다.
+        mesh.rotation.y = THREE.MathUtils.degToRad(360);
+        ```
+
+    3. 크기
+        ```js
+        mesh.scale.x = -1; // x축 김소
+        mesh.scale.y = 1; // y축 기본값
+        mesh.scale.z = 1.5; // z축 확대
+        ```
+***
+### Mesh를 구성하는 2가지 인자
 
 **:one: Geometry - 형태**
 

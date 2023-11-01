@@ -13,7 +13,7 @@ if(WebGL.isWebGLAvailable()){
     
     // 2. camera
     const camera = new THREE.PerspectiveCamera(50, window.innerWidth/window.innerHeight, 0.1, 1000);
-    camera.position.set(2, 2, 2);
+    camera.position.set(3, 3, 3);
     camera.lookAt(0, 0 , 0);
 
 
@@ -28,40 +28,32 @@ if(WebGL.isWebGLAvailable()){
     scene.add(light);
 
 
-    // 스텐다드
-    const material_standard = new THREE.MeshStandardMaterial({
-        color: 0x2e6ff2,
-        // wireframe: true,
-        transparent: true,
-        opacity: 0.5,
-        // roughness: 0.2,
-        // metalness: 0.7,
-        // map:,
-        // side: THREE.FrontSide
+    const geometry = new THREE.ConeGeometry(0.5, 1, 4);
+    const meterial = new THREE.MeshStandardMaterial({
+        color: 0x3eff3f
     });
+    const mesh = new THREE.Mesh(geometry, meterial);
 
-    // 베이직
-    const material_basic = new THREE.MeshBasicMaterial({
-        color: 0x2e6ff2
-    });
+    scene.add(mesh);
 
-    // 피지컬
-    const material_physical = new THREE.MeshPhysicalMaterial({
-        color: 0x2e6ff2,
-        clearcoat: 0.8,
-        clearcoatRoughness: 0.2
-    });
+    // 1. 위치
+    // mesh.position.x = 2;
+    // mesh.position.y = 1;
+    // mesh.position.z = 0;
+    mesh.position.set(-1,0,0.5);
 
-    // 퐁
-    const material_phong = new THREE.MeshPhongMaterial({
-        color: 0x2e6ff2,
-        shininess: 100,
-        specular: 0xffaaaa
-    });
+    // 2. 회전
+    // mesh.rotation.y = 300;
+    mesh.rotation.y = THREE.MathUtils.degToRad(360);
 
-    const geo1 = new THREE.BoxGeometry(1,1,1);
-    const obj1 = new THREE.Mesh(geo1, material_standard); 
-    scene.add(obj1);
+    // 3. 크기
+    mesh.scale.x = -1;
+    mesh.scale.y = 1;
+    mesh.scale.z = 1.5;
+
+    // axesHelper
+    const axesHelper = new THREE.AxesHelper(3);
+    scene.add(axesHelper);
 
 
     // 애니메이션
