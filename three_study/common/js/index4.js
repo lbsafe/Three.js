@@ -1,5 +1,6 @@
 import * as THREE from "three";
-import WebGL from "../../node_modules/three/examples/jsm/capabilities/WebGL.js"
+import WebGL from "../../node_modules/three/examples/jsm/capabilities/WebGL.js";
+import {OrbitControls} from "../../node_modules/three/examples/jsm/controls/OrbitControls.js";
 
 if(WebGL.isWebGLAvailable()){
     
@@ -32,10 +33,10 @@ if(WebGL.isWebGLAvailable()){
     const material_standard = new THREE.MeshStandardMaterial({
         color: 0x2e6ff2,
         // wireframe: true,
-        transparent: true,
-        opacity: 0.5,
-        // roughness: 0.2,
-        // metalness: 0.7,
+        // transparent: true,
+        // opacity: 0.5,
+        roughness: 0.2,
+        metalness: 0.6,
         // map:,
         // side: THREE.FrontSide
     });
@@ -63,6 +64,9 @@ if(WebGL.isWebGLAvailable()){
     const obj1 = new THREE.Mesh(geo1, material_standard); 
     scene.add(obj1);
 
+    // OrbitControls
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
 
     // 애니메이션
     function animate(){
@@ -71,6 +75,7 @@ if(WebGL.isWebGLAvailable()){
         // box.rotation.x += 0.01;
         // console.log(box.rotation.y);
         renderer.render(scene, camera);
+        controls.update();
         requestAnimationFrame(animate);
     }
     animate();

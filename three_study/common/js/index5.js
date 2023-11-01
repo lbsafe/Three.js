@@ -1,5 +1,6 @@
 import * as THREE from "three";
-import WebGL from "../../node_modules/three/examples/jsm/capabilities/WebGL.js"
+import WebGL from "../../node_modules/three/examples/jsm/capabilities/WebGL.js";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 if(WebGL.isWebGLAvailable()){
     
@@ -55,14 +56,12 @@ if(WebGL.isWebGLAvailable()){
     const axesHelper = new THREE.AxesHelper(3);
     scene.add(axesHelper);
 
+    const controls = new OrbitControls(camera, renderer.domElement);
 
     // 애니메이션
     function animate(){
-        // box.rotation.y += 0.01;
-        // box.rotation.z += 0.01;
-        // box.rotation.x += 0.01;
-        // console.log(box.rotation.y);
         renderer.render(scene, camera);
+        controls.update();
         requestAnimationFrame(animate);
     }
     animate();
