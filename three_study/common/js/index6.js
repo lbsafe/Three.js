@@ -7,7 +7,7 @@ if(WebGL.isWebGLAvailable()){
     
     // 1. scene
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xffe287);
+    scene.background = new THREE.Color(0xfffcf2);
     
     
     // 2. camera
@@ -22,12 +22,15 @@ if(WebGL.isWebGLAvailable()){
     document.body.appendChild(renderer.domElement);
 
     const light = new THREE.DirectionalLight(0xffffff);
-    light.position.set(2, 4, 3);
+    light.position.set(4, 6, 3);
     scene.add(light);
 
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
+    const geometry = new THREE.TorusGeometry(0.2, 0.1);
+    // const geometry = new THREE.SphereGeometry(1);
     const material = new THREE.MeshStandardMaterial({
-        color: 0x2e6ff2
+        color: 0xbc6c25,
+        metalness: 0.6,
+        roughness: 0.2
     });
     const box = new THREE.Mesh(geometry,material);
     scene.add(box);
