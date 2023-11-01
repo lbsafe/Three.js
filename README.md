@@ -384,7 +384,7 @@ window.addEventListener('resize',()=>{
         mesh.scale.z = 1.5; // z축 확대
         ```
 ***
-### Mesh를 구성하는 2가지 인자
+### :mag: Mesh를 구성하는 2가지 인자
 
 **:one: Geometry - 형태**
 
@@ -490,4 +490,53 @@ window.addEventListener('resize',()=>{
         specular: 0xffaaaa // 물체가 반사하는 빛의 색상 지정 가능
     });
     ```
+***
+
+## OrbitControls 조작법
+> 마우스를 이용해 카메라를 조작할 수 있는 자바스크립트 모듈
+
+**:one: OrbitControls 모듈을 불러오기**
+
+```js
+import { OrbitControls } from "../../node_modules/three/examples/jsm/controls/OrbitControls.js";
+```
+
+**:two: 컨트롤 만들기**
+
+```js
+// OrbitControls는 카메라 속성과 렌더러의 돔 요소를 전달해주어야 한다.
+const controls = new OrbitControls(camera, renderer.domElement);
+```
+
+**:three: 애니메이션 함수 안에 controls 업데이트 시켜주기**
+
+```js
+function animate(){
+    renderer.render(scene, camera);
+    controls.update();
+    requestAnimationFrame(animate);
+}
+animate();
+```
+
+**:star: OrbitControls 사용법**
+
+```js
+// 조작 설정
+controls.enableZoom = false; // 스크롤 확대 축소 조작여부
+controls.enableRotate = false; // 드래그 시 카메라 조작여부
+controls.enablePan = false; // 커맨드(ctrl)를 통한 카메라 이동 조작여부
+
+// 조작 범위
+controls.minDistance = 5; // 최대 축소 거리
+controls.maxDistance = 10; // 최대 확대 거리
+controls.maxPolarAngle = Math.PI / 3; // 회전 각도 지정
+
+// 자동 조작
+controls.autoRotate = true; // 카메라 자동 회전 여부
+controls.autoRotateSpeed = 1; // 자동 회전 속도 - 시 반대로 움직임
+
+// 부드러운 조작
+controls.enableDamping = true; // 조작 시 관성이 적용되어 부드러운 움직임 적용
+```
 ***
