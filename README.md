@@ -190,6 +190,12 @@ const scene = new THREE.Scene();
 scene.add(element);
 ```
 
+* :pushpin: scene 백그라운드 컬러 추가
+    
+    ```js
+    scene.background = new THREE.Color(0xffe287);
+    ```
+
 **:two: Camera**
 >Scene을 보는 시점을 정의한다. Three.js에서는 여러 카메라를 제공하며,   
 대표적으로 **PerspectiveCamera**와 **OrthographicCamera**를 사용한다.
@@ -538,5 +544,14 @@ controls.autoRotateSpeed = 1; // 자동 회전 속도 - 시 반대로 움직임
 
 // 부드러운 조작
 controls.enableDamping = true; // 조작 시 관성이 적용되어 부드러운 움직임 적용
+```
+***
+
+## 빛 추가
+
+```js
+const light = new THREE.DirectionalLight(0xffffff); // 빛 추가 및 컬러 지정
+light.position.set(4, 6, 3); // 빛의 위치 변경
+scene.add(light);
 ```
 ***
