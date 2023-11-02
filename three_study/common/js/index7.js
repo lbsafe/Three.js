@@ -59,7 +59,7 @@ if(WebGL.isWebGLAvailable()){
 
     // axesHelper
     const axesHelper = new THREE.AxesHelper(3);
-    scene.add(axesHelper);
+    // scene.add(axesHelper);
     // leaf.add(axesHelper);
 
     // orbitcontrols
