@@ -279,7 +279,7 @@ renderer.render(scene, camera);
 
 **:two:** 애니메이션에 필요한 함수는 animate 내부에 작성해준다.
 
-* 브라우저가 다음 프레임을 렌더링하기 전에 반복적으로 animate를 호출한다.
+* 동작할 애니메이션 추가
     
     ```js
     function animate(){
@@ -292,7 +292,7 @@ renderer.render(scene, camera);
 
 **:three:** animate 내부에 화면을 출력해주는 렌더링 함수 호출
 
-* 브라우저가 다음 프레임을 렌더링하기 전에 반복적으로 animate를 호출한다.
+* animate 함수 내에 랜더링 함수 호출
     
     ```js
     function animate(){
