@@ -552,6 +552,6 @@ controls.enableDamping = true; // 조작 시 관성이 적용되어 부드러운
 ```js
 const light = new THREE.DirectionalLight(0xffffff); // 빛 추가 및 컬러 지정
 light.position.set(4, 6, 3); // 빛의 위치 변경
-scene.add(light);
+scene.add(light); // scene에 추가
 ```
 ***
