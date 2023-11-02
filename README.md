@@ -364,6 +364,7 @@ window.addEventListener('resize',()=>{
         scene.add(axesHelper);
         ```
         <p align="center"><img src="https://github.com/lbsafe/Three.js/assets/65703793/f74e927e-54ec-42e7-a4d6-88572cf495cc" alt="three" width="200px"></p>
+        <p align="center">(X축 = 빨강, Y축 = 초록, Z축 = 파랑)</p>
 
     1. 위치
 
