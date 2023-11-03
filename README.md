@@ -378,6 +378,7 @@ window.addEventListener('resize',()=>{
     2. 회전
 
         ```js
+        mesh.rotation.reorder('YXZ'); // 축의 회전을 지정해 줄 수 있다. 기본 XYZ
         mesh.rotation.y = 360; // Three.js 회전은 도가 아닌 라디안 값이다.
 
         // 아래와 같이 MathUtils.degToRad을 이용하여 원하는 각도를 넣어준다.
