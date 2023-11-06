@@ -652,7 +652,7 @@ export default function printApple(){ // export default를 사용해서 함수�
 }
 ```
 
-**:three: 해당 파일을 사용할 곳에서 반환 값을 가져온다.**
+**:three: 해당 파일을 사용할 곳에서 반환 값을 가져오고 scene에 추가한다.**
 
 <p align="center"><img src="https://github.com/lbsafe/Three.js/assets/65703793/7207df84-6cef-44bb-8d99-a040d467e42a" alt="file" width="100%"></p>
 <p align="center"><img src="https://github.com/lbsafe/Three.js/assets/65703793/55a10c7c-c89c-44d6-a643-e46340de4b10" alt="file" width="100%"></p>
