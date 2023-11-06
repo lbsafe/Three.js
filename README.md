@@ -557,3 +557,110 @@ light.position.set(4, 6, 3); // 빛의 위치 변경
 scene.add(light); // scene에 추가
 ```
 ***
+
+## Group 사용 방법
+
+**:one:** Three.js 의 Group 메소드를 이용해서 관리할 그룹을 생성한다.
+```js
+const bamboo_tree = new THREE.Group();
+```
+
+**:two:** 생성한 그룹으로 관리할 요소들을 그룹에 추가한다.
+```js
+Before)
+    scene.add(bamboo1);
+    scene.add(bamboo2);
+
+After)
+    bamboo_trunk.add(bamboo1);
+    bamboo_trunk.add(bamboo2);
+```
+
+**:three:** 그룹을 scene 에 추가해준다.
+```js
+scene.add(bamboo_trunk);
+```
+
+**:star: Group을 통한 Mesh 조작하기**
+
+* Group은 묶인 요소를 다 같이 조작이 가능하다.
+
+    ```js
+    bamboo_trunk.position.set(1,1,1); // 그룹 전체 이동
+    bamboo_trunk.scale.set(0.5,0.5,0.5); // 그룹 전체 크기 조정
+    bamboo_trunk_rotation.y = Math.PI/2; // 그룹 전체 회전
+    ```
+
+* Group은 자식 요소로 Mesh 뿐만이 아니라 Group을 가질 수 있다.
+
+    ```js
+    const bamboo_tree = new THREE.Group();
+    bamboo_tree.add(bamboo_trunk, bamboo_leaf);
+
+    scene.add(bamboo_tree);
+    ```
+***
+
+## Object 파일 분리하기
+
+**:one: 따로 관리할 폴더 및 파일 생성**
+
+<p align="center"><img src="https://github.com/lbsafe/Three.js/assets/65703793/17a16948-a5d8-421f-a948-93065ba569c8" alt="file" width="220px"></p>
+
+**:two: Object 를 반환하는 함수 선언 및 해당 코드 넣기**
+    
+1. 작성할 파일에도 Three.js 라이브러리를 불러온다.
+2. export default 를 사용하여 반환 할 함수를 내보내 준다.
+3. scene에 apple_obj를 추가 하는 대신 apple_obj 반환해준다.
+
+```js
+import * as THREE from "three"; // Three.js 라이브러리를 불러온다.
+
+export default function printApple(){ // export default를 사용해서 함수를 내보내 줌.
+    const apple_obj = new THREE.Group();
+
+    // 사과 몸통
+    const apple_meterial = new THREE.MeshStandardMaterial({
+        color : 0xe63946
+    });
+    const apple_geo = new THREE.SphereGeometry(1.2, 64, 32);
+    const apple = new THREE.Mesh(apple_geo, apple_meterial);
+    apple_obj.add(apple);
+    // 나무
+    const wood_meterial = new THREE.MeshStandardMaterial({
+        color : 0x99582a
+    });
+    const wood_geo = new THREE.CylinderGeometry(0.15,0.1,0.5,13);
+    const wood = new THREE.Mesh(wood_geo, wood_meterial);
+    apple_obj.add(wood);
+    wood.position.set(0,1.4,0);
+    // 나뭇잎
+    const leaf_meterial = new THREE.MeshStandardMaterial({
+        color : 0xa7c957,
+        side : THREE.DoubleSide
+    });
+    const leaf_geo = new THREE.SphereGeometry(0.6,32,16,0,Math.PI/3);
+    const leaf = new THREE.Mesh(leaf_geo, leaf_meterial);
+    apple_obj.add(leaf);
+    leaf.position.set(0.25,1,-0.6);
+    leaf.rotation.x = THREE.MathUtils.degToRad(50);
+    leaf.rotation.y = THREE.MathUtils.degToRad(230);
+    leaf.rotation.z = THREE.MathUtils.degToRad(-30);
+
+    // scene.add(apple_obj);
+    return apple_obj; // scene 대신 반환해준다.
+}
+```
+
+**:three: 해당 파일을 사용할 곳에서 반환 값을 가져온다.**
+
+<p align="center"><img src="https://github.com/lbsafe/Three.js/assets/65703793/7207df84-6cef-44bb-8d99-a040d467e42a" alt="file" width="100%"></p>
+<p align="center"><img src="https://github.com/lbsafe/Three.js/assets/65703793/55a10c7c-c89c-44d6-a643-e46340de4b10" alt="file" width="100%"></p>
+
+```js
+import printApple from "../mesh/apple.js"; // 반환 할 파일 가져오기
+
+const apple_obj1 = printApple();
+scene.add(apple_obj1);
+```
+***
