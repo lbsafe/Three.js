@@ -566,8 +566,8 @@ scene.add(light); // scene에 추가
 * **AmbientLight**
 
     - 특징
-        1. 모든 Mesh를 대상으로 전역적으로 빛을 발산하고 빛에 방향이 없기 때문에 그림자가 생기지 않는다.
-        2. 객체의 출력이나 재질을 확인할 때 용이하다.
+        - 모든 Mesh를 대상으로 전역적으로 빛을 발산하고 빛에 방향이 없기 때문에 그림자가 생기지 않는다.
+        - 객체의 출력이나 재질을 확인할 때 용이하다.
 
     ```js
     //인자 값 - new THREE.AmbientLight(색상, 강도);
@@ -578,9 +578,9 @@ scene.add(light); // scene에 추가
 * **DirectionalLight**
 
     - 특징
-    1. 햇빛과 같은 방향성 광원, 모든 점에서 일정한 방향으로 광을 발산한다.
-    2. 빛과 물체 간의 거리에 상관없이 동일한 빛의 효과를 준다.
-    3. 그림자가 생기며, 기본 위치는 (0, 1, 0)에 생성 된다.
+        - 햇빛과 같은 방향성 광원, 모든 점에서 일정한 방향으로 광을 발산한다.
+        - 빛과 물체 간의 거리에 상관없이 동일한 빛의 효과를 준다.
+        - 그림자가 생기며, 기본 위치는 (0, 1, 0)에 생성 된다.
 
     ```js
     // 인자 값 - new THREE.DirectionalLight(색상, 강도);
@@ -597,8 +597,8 @@ scene.add(light); // scene에 추가
 * **PointLight**
 
     - 특징
-        1. 한 점에서 방출되는 점 광원
-        2. 전구와 같이 모든 방향으로 빛을 발산합니다
+        - 한 점에서 방출되는 점 광원
+        - 전구와 같이 모든 방향으로 빛을 발산합니다
 
     ```js
     // 인자 값 - new THREE.PointLight(색상, 크기, 빛의 최대 범위);
@@ -614,8 +614,8 @@ scene.add(light); // scene에 추가
 * **SpotLight**
 
     - 특징
-        1. 한 점에서 원뿔 형태로 빛을 발산한다.
-        2. 그림자가 생기며, 기본 위치는 (0, 1, 0)에 생성 된다.
+        - 한 점에서 원뿔 형태로 빛을 발산한다.
+        - 그림자가 생기며, 기본 위치는 (0, 1, 0)에 생성 된다.
 
     ```js
     // 인자 값 - new THREE.SpotLight(색상, 강도, 거리, 각도, 반음영-흐림효과);
@@ -638,8 +638,8 @@ scene.add(light); // scene에 추가
 * **HemisphereLight**
 
     - 특징
-        1. skyColor와 groundColor 두 가지 색상을 받아 위아래로 빛을 비춥니다.
-        2. 그림자를 사용할 수 없습니다.
+        - skyColor와 groundColor 두 가지 색상을 받아 위아래로 빛을 비춥니다.
+        - 그림자를 사용할 수 없습니다.
     
     ```js
     // 인자 값 - new THREE.HemisphereLight(윗 색상, 밑 색상);
@@ -648,9 +648,9 @@ scene.add(light); // scene에 추가
     ```
 * **RectAreaLight**
     - 특징
-        1. 사각형 모양의 광원으로, 평면에 균일하게 빛을 발산한다.
-        2. 물리기반렌더링(MeshStandardMaterial 또는 MeshPhysicalMaterial)만 지원
-        3. 모듈을 import 해주어야 한다.
+        - 사각형 모양의 광원으로, 평면에 균일하게 빛을 발산한다.
+        - 물리기반렌더링(MeshStandardMaterial 또는 MeshPhysicalMaterial)만 지원
+        - 모듈을 import 해주어야 한다.
 
     ```js
     // RectAreaLight 모듈 import
