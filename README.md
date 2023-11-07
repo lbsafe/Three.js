@@ -711,6 +711,94 @@ plane.receiveShadow = true; // 그림자가 생기는 Mesh
     dlLight.shadow.radius = 5;
     ```
 ***
+
+## 텍스쳐 입히기
+
+>TextureLoader를 이용해 불러온 텍스쳐 객체를 Material 속성에 할당하면 Mesh에 원하는 텍스쳐를 적용할 수 있다.
+
+**:one:** TextureLoader 생성
+
+```js
+const loader = new THREE.TextureLoader();
+```
+
+**:two:** 이미지를 텍스쳐 객체로 변환
+
+- TextureLoader를 이용하여 이미지를 불러오면 자동으로 텍스쳐 객체로 변환 된다.
+
+```js
+const basecolor = loader.load("../common/textures/bark/Bark_06_basecolor.jpg");
+const normal = loader.load("../common/textures/bark/Bark_06_normal.jpg");
+const roughness = loader.load("../common/textures/bark/Bark_06_roughness.jpg");
+const height = loader.load("../common/textures/bark/Bark_06_height.png");
+```
+
+**:three:** material 속성에 불러와준다.
+
+```js
+const meterial = new THREE.MeshStandardMaterial({
+    map : basecolor,
+    normalMap : normal,
+    normalScale : new THREE.Vector2(0,0),
+    roughness : 0.4,
+    roughnessMap : roughness,
+    displacementMap : height,
+    displacementScale : 0.5
+});
+
+```
+
+### Texture 재질 속성
+
+* **map**
+
+    ```js
+    // 재질의 색상
+
+    const material = new THREE.MeshStandardMaterial({
+        map: basecolor
+    });
+    ```
+
+* **normal**
+
+    - 실제로 형체가 변하지 않지만, 표면의 빛을 왜곡시켜 입체감 있는 표현이 가능
+    - 2차원 벡터 값을 갖는 normalScale을 조절하여 명암을 조절할 수 있다.
+
+    ```js
+    const material = new THREE.MeshStandardMaterial({
+        normal: normal,
+        //normalScale : new THREE.Vector2(0,0), // 기본값 1,1
+        roughness : 0.4 // 반사 정도 조절
+    });
+    ```
+
+* **roughnessMap**
+
+    - 거칠기 또는 광택 등의 질감에 따른 빛의 굴곡을 표현한다.
+    - 밝은 부분은 매끈하게, 어두운 부분은 거칠게 표현한다.
+    - roughness 속성을 조절하여 표면에 반사되는 빛의 세기를 조절한다.
+
+    ```js
+    const material = new THREE.MeshStandardMaterial({
+        roughnessMap : roughness
+    });
+    ```
+
+* **displacementMap**
+
+    - 텍스쳐의 명암에 따라 표면의 높낮이를 조절한다.
+    - 밝을수록 높고, 어두울수록 낮게 표현한다.
+    - displacementScale 을 조절하여 높낮이의 정도를 설정할 수 있다.
+
+    ```js
+    const meterial = new THREE.MeshStandardMaterial({
+        displacementMap : height,
+        displacementScale : 0.5
+    });
+    ```
+***
+
 ## Group 사용 방법
 
 **:one:** Three.js 의 Group 메소드를 이용해서 관리할 그룹을 생성한다.
