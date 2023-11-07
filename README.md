@@ -671,7 +671,46 @@ scene.add(light); // scene에 추가
     scene.add(rlHelper);
     ```
 ***
+## 그림자 추가
 
+**:one:** Renderer 그림자 속성 활성화
+
+```js
+renderer.shadowMap.enabled = true;
+```
+
+**:two:** 빛에 그림자 속성 적용
+- DirectinalLight, PointLight, SpotLight만 그림자 효과가 적용
+
+```js
+dlLight.castShadow = true;
+```
+
+**:three:** Mesh에 그림자 속성 적용
+
+```js
+obj.castShadow = true; // 그림자를 만드는 Mesh
+plane.receiveShadow = true; // 그림자가 생기는 Mesh
+```
+**:star: 그림자의 해상도와 블러효과**
+
+- 그림자 해상도
+    - 값이 클수록 해상도가 높아지지만, 렌더링에 필요한 리소스가 증가한다.
+    - 해상도와 렌더링 속도 간의 균형을 고려한 값을 설정할 필요가 있다.
+    ```js
+    // 기본값 512
+
+    dlLight.shadow.mapSize.width = 1024;
+    dlLight.shadow.mapSize.height = 1024;    
+    ```
+
+- 그림자 블러효과
+    - 그림자의 흐려지는 정도를 조절하여 부드러운 그림자 효과를 낼 수 있다.
+    - 블러 효과가 강할수록 렌더링 속도가 느려진다.
+    ```js
+    dlLight.shadow.radius = 5;
+    ```
+***
 ## Group 사용 방법
 
 **:one:** Three.js 의 Group 메소드를 이용해서 관리할 그룹을 생성한다.
