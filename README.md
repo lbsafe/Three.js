@@ -551,11 +551,125 @@ controls.enableDamping = true; // 조작 시 관성이 적용되어 부드러운
 
 ## 빛 추가
 
+> 여러 빛을 조합해서 다양한 효과를 낼 수 있다.    
+AmbientLight를 제외한 빛은 각각의 Helper를 통해 시각화 하여 확인할 수 있다.
+
+**기본 사용법**
 ```js
 const light = new THREE.DirectionalLight(0xffffff); // 빛 추가 및 컬러 지정
 light.position.set(4, 6, 3); // 빛의 위치 변경
 scene.add(light); // scene에 추가
 ```
+
+### 빛의 종류
+
+* **AmbientLight**
+
+    - 특징
+        1. 모든 Mesh를 대상으로 전역적으로 빛을 발산하고 빛에 방향이 없기 때문에 그림자가 생기지 않는다.
+        2. 객체의 출력이나 재질을 확인할 때 용이하다.
+
+    ```js
+    //인자 값 - new THREE.AmbientLight(색상, 강도);
+    const ambientLight = new THREE.AmbientLight(0xfffff, 1); 
+    scene.add(ambientLight);
+    ```
+
+* **DirectionalLight**
+
+    - 특징
+        1. 햇빛과 같은 방향성 광원, 모든 점에서 일정한 방향으로 광을 발산한다.
+        2. 빛과 물체 간의 거리에 상관없이 동일한 빛의 효과를 준다.
+        3. 그림자가 생기며, 기본 위치는 (0, 1, 0)에 생성 된다.
+
+    ```js
+    // 인자 값 - new THREE.DirectionalLight(색상, 강도);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    directionalLight.position.set(-2,2,0);
+    directionalLight.target.position.set(0,2,0);
+    scene.add(directionalLight);
+
+    // 인자 값 - new THREE.DirectionalLightHelper(적용할 빛, 크기, 색상);
+    const dlHelper = new THREE.DirectionalLightHelper(directionalLight, 1, 0xff0000);
+    scene.add(dlHelper);
+    ```
+
+* **PointLight**
+
+    - 특징
+        1. 한 점에서 방출되는 점 광원
+        2. 전구와 같이 모든 방향으로 빛을 발산합니다
+
+    ```js
+    // 인자 값 - new THREE.PointLight(색상, 크기, 빛의 최대 범위);
+    const pointLight = new THREE.PointLight(0xff0000, 1, 2);
+    pointLight.position.set(1,1,0);
+    scene.add(pointLight);
+    
+    // 인자 값 - THREE.PointLightHelper(적용할 빛, 크기, 색상);
+    const plHelper = new THREE.PointLightHelper(pointLight, 1, 0x00ff00);
+    scene.add(plHelper);
+    ```
+
+* **SpotLight**
+
+    - 특징
+        1. 한 점에서 원뿔 형태로 빛을 발산한다.
+        2. 그림자가 생기며, 기본 위치는 (0, 1, 0)에 생성 된다.
+
+    ```js
+    // 인자 값 - new THREE.SpotLight(색상, 강도, 거리, 각도, 반음영-흐림효과);
+    const spotLight = new THREE.SpotLight(0xffffff, 1, 0, Math.PI / 6, 0.5);
+    spotLight.position.set(0,2,0);
+    scene.add(spotLight);
+    
+    // 인자 값 - new THREE.SpotLightHelper(적용할 빛, 색상);
+    const slHelper = new THREE.SpotLightHelper(spotLight, 0xff0000);
+    scene.add(slHelper);
+
+    // slHelper는 크기를 결정하는 매개변수가 없어서 대상을 이동하고 나서 update 메서드를 호출해주어야 한다.
+    function animate(){
+        slHelper.update();
+        requestAnimationFrame(animate);
+    }
+    animate();
+    ```
+
+* **HemisphereLight**
+
+    - 특징
+        1. skyColor와 groundColor 두 가지 색상을 받아 위아래로 빛을 비춥니다.
+        2. 그림자를 사용할 수 없습니다.
+    
+    ```js
+    // 인자 값 - new THREE.HemisphereLight(윗 색상, 밑 색상);
+    const hemisphereLight = new THREE.HemisphereLight(0xffaaaa, 0x00ff00);
+    scene.add(hemisphereLight);
+    ```
+* **RectAreaLight**
+    - 특징
+        1. 사각형 모양의 광원으로, 평면에 균일하게 빛을 발산한다.
+        2. 물리기반렌더링(MeshStandardMaterial 또는 MeshPhysicalMaterial)만 지원
+        3. 모듈을 import 해주어야 한다.
+
+    ```js
+    // RectAreaLight 모듈 import
+    import { RectAreaLightUniformsLib } from "three/examples/jsm/lights/RectAreaLightUniformsLib.js";
+
+    // 인자 값 - new THREE.RectAreaLight(색상, 강도, 직사각형 넓이, 직사각형 높이);
+    RectAreaLightUniformsLib.init(); //메서드 호출
+    const rectAreaLight = new THREE.RectAreaLight(0xfffff, 1, 5, 5);
+    rectAreaLight.position.set(0,0.1,0);
+    rectAreaLight.rotation.x = Math.PI / -2;
+    scene.add(rectAreaLight);
+
+    // RectAreaLightHelper 모듈 import
+    import { RectAreaLightHelper } from "three/examples/jsm/helpers/RectAreaLightHelper.js";
+
+    // 인자 값 - new THREE.HemisphereLight(적용할 빛, 색상);
+    const rlHelper = new RectAreaLightHelper(rectAreaLight, 0xff0000);
+    scene.add(rlHelper);
+    ```
 ***
 
 ## Group 사용 방법
