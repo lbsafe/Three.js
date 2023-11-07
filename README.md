@@ -598,7 +598,7 @@ scene.add(light); // scene에 추가
 
     - 특징
         - 한 점에서 방출되는 점 광원
-        - 전구와 같이 모든 방향으로 빛을 발산합니다
+        - 전구와 같이 모든 방향으로 빛을 발산한다.
 
     ```js
     // 인자 값 - new THREE.PointLight(색상, 크기, 빛의 최대 범위);
@@ -638,8 +638,8 @@ scene.add(light); // scene에 추가
 * **HemisphereLight**
 
     - 특징
-        - skyColor와 groundColor 두 가지 색상을 받아 위아래로 빛을 비춥니다.
-        - 그림자를 사용할 수 없습니다.
+        - skyColor와 groundColor 두 가지 색상을 받아 위아래로 빛을 비춘다.
+        - 그림자를 사용할 수 없다.
     
     ```js
     // 인자 값 - new THREE.HemisphereLight(윗 색상, 밑 색상);
