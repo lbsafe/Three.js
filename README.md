@@ -797,6 +797,27 @@ const meterial = new THREE.MeshStandardMaterial({
         displacementScale : 0.5
     });
     ```
+
+### 여러개의 재질 속성
+
+> 각각의 면에 다른 Matrial을 적용할 때는 배열을 이용한다.
+
+```js
+// 배열 생성
+const meterials = [
+    new THREE.MeshStandardMaterial({color: 0xccffee}),
+    new THREE.MeshStandardMaterial({color: 0x0000ff}),
+    new THREE.MeshStandardMaterial({color: 0x00ffaa}),
+    new THREE.MeshStandardMaterial({color: 0xff0000}),
+    new THREE.MeshStandardMaterial({color: 0xeff00e}),
+    new THREE.MeshStandardMaterial({color: 0xee30fe})
+]
+
+// 생성한 배열을 객체에 전달
+const box = new THREE.Mesh(geo, meterials);
+scene.add(box);
+```
+
 ***
 
 ## Group 사용 방법

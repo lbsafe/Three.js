@@ -9,7 +9,7 @@ if(WebGL.isWebGLAvailable()){
 
     // camera
     const camera = new THREE.PerspectiveCamera(50, window.innerWidth/window.innerHeight, 0.1, 1000);
-    camera.position.set(5,5,5);
+    camera.position.set(3,3,3);
     camera.lookAt(0,0,0);
 
     // randerer
@@ -22,16 +22,14 @@ if(WebGL.isWebGLAvailable()){
 
     // 빛
     const dlLight = new THREE.DirectionalLight(0xffffff, 1);
-    dlLight.position.set(2,2,0);
+    dlLight.position.set(3,4,5);
     dlLight.target.position.set(0,0,0);
-    scene.add(dlLight);
+    // scene.add(dlLight);
     dlLight.castShadow = true;
-    // 해상도
-    dlLight.shadow.mapSize.width = 1024;
-    dlLight.shadow.mapSize.height = 1024;
-    // 블러
-    dlLight.shadow.radius = 5;
 
+    const amLight = new THREE.AmbientLight(0xffffff);
+
+    scene.add(amLight);
 
     // 텍스쳐
     const loader = new THREE.TextureLoader();
@@ -42,32 +40,23 @@ if(WebGL.isWebGLAvailable()){
 
 
     // 도형
-    const geo = new THREE.SphereGeometry(1);
+    const geo = new THREE.BoxGeometry(1,1,1);
     const material = new THREE.MeshStandardMaterial({
-        map : basecolor,
-        normalMap : normal,
-        // normalScale : new THREE.Vector2(0,0),
-        roughness : 0.4,
-        roughnessMap : roughness,
-        displacementMap : height,
-        displacementScale : 0.5
+        color : 0xeeffee
     });
 
-    const cube = new THREE.Mesh(geo, material);
-    cube.position.set(0,1,0);
-    scene.add(cube);
-    cube.castShadow = true;
+    const materials = [
+        new THREE.MeshStandardMaterial({color: 0xccffee}),
+        new THREE.MeshStandardMaterial({color: 0x0000ff}),
+        new THREE.MeshStandardMaterial({color: 0x00ffaa}),
+        new THREE.MeshStandardMaterial({color: 0xff0000}),
+        new THREE.MeshStandardMaterial({color: 0xeff00e}),
+        new THREE.MeshStandardMaterial({color: 0xee30fe})
+    ]
 
-    const geo2 = new THREE.PlaneGeometry(10,10);
-    const material2 = new THREE.MeshStandardMaterial({
-        color: 0x81a8f7,
-        side : THREE.DoubleSide
-    })
-    const plane = new THREE.Mesh(geo2, material2);
-    plane.rotation.x = Math.PI/2;
-    plane.position.y = -1;
-    scene.add(plane);
-    plane.receiveShadow = true;
+
+    const box = new THREE.Mesh(geo, materials);
+    scene.add(box);
 
     // OrbitControls
     const controls = new OrbitControls(camera, renderer.domElement);
