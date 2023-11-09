@@ -802,15 +802,19 @@ const meterial = new THREE.MeshStandardMaterial({
 
 > 각각의 면에 다른 Matrial을 적용할 때는 배열을 이용한다.
 
+<p align="center"><img src="https://github.com/lbsafe/Three.js/assets/65703793/8457c78f-76c2-4b6f-af1f-77b267816091" alt="three" width="300px"></p>
+
+6개의 Material이 육면체에 매핑되는 순서는 오른쪽(1), 왼쪽(2), 위(3), 아래(4), 앞(5), 뒤(6)이다.
+
 ```js
 // 배열 생성
 const meterials = [
-    new THREE.MeshStandardMaterial({color: 0xccffee}),
-    new THREE.MeshStandardMaterial({color: 0x0000ff}),
-    new THREE.MeshStandardMaterial({color: 0x00ffaa}),
     new THREE.MeshStandardMaterial({color: 0xff0000}),
+    new THREE.MeshStandardMaterial({color: 0x00ff00}),
+    new THREE.MeshStandardMaterial({color: 0x0000ff}),
+    new THREE.MeshStandardMaterial({color: 0xe02aff}),
     new THREE.MeshStandardMaterial({color: 0xeff00e}),
-    new THREE.MeshStandardMaterial({color: 0xee30fe})
+    new THREE.MeshStandardMaterial({color: 0xe0faaa})
 ]
 
 // 생성한 배열을 객체에 전달

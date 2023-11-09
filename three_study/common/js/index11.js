@@ -46,12 +46,12 @@ if(WebGL.isWebGLAvailable()){
     });
 
     const materials = [
-        new THREE.MeshStandardMaterial({color: 0xccffee}),
-        new THREE.MeshStandardMaterial({color: 0x0000ff}),
-        new THREE.MeshStandardMaterial({color: 0x00ffaa}),
         new THREE.MeshStandardMaterial({color: 0xff0000}),
+        new THREE.MeshStandardMaterial({color: 0x00ff00}),
+        new THREE.MeshStandardMaterial({color: 0x0000ff}),
+        new THREE.MeshStandardMaterial({color: 0xe02aff}),
         new THREE.MeshStandardMaterial({color: 0xeff00e}),
-        new THREE.MeshStandardMaterial({color: 0xee30fe})
+        new THREE.MeshStandardMaterial({color: 0xe0faaa})
     ]
 
 
