@@ -7,8 +7,15 @@ export default function printTree(){
     /* -----나무 줄기----- */ 
     const bamboo_trunk = new THREE.Group();
 
+    const bamboo_loader = new THREE.TextureLoader();
+    const bamboo_baseColor = bamboo_loader.load("../common/textures/wood/moss_wood_diff_1k.jpg");
+    const bamboo_roughness = bamboo_loader.load("../common/textures/wood/moss_wood_rough_1k.jpg");
+    
     const bamboo_meterial = new THREE.MeshStandardMaterial({
-        color : 0x6a994e
+        color : 0x5d9200,
+        map : bamboo_baseColor,
+        roughness : 0.8,
+        roughnessMap : bamboo_roughness,
     });
 
     // bamboo1
@@ -45,7 +52,10 @@ export default function printTree(){
 
     // bamboo stem
     const bamboo_meterial2 = new THREE.MeshStandardMaterial({
-        color : 0xdde5b6
+        color : 0xdde5b6,
+        map : bamboo_baseColor,
+        roughness : 0.8,
+        roughnessMap : bamboo_roughness,
     });
     const bamboo_stem = new THREE.CylinderGeometry(0.24,0.24,0.05,32);
     
@@ -60,9 +70,16 @@ export default function printTree(){
     /* ----- 나뭇가지 ----- */
     const bamboo_obj = new THREE.Group();
 
-    // bamboo leaf
+    const leaf_loader = new THREE.TextureLoader();
+    const leaf_baseColor = leaf_loader.load("../common/textures/leaf/Wood_027_basecolor.jpg");
+    const leaf_height = leaf_loader.load("../common/textures/woodWood_027_height.png");
+
+    // bamboo branch
     const bamboo_meterial3 = new THREE.MeshStandardMaterial({
-        color : 0x90a955
+        color : 0x90a955,
+        map : bamboo_baseColor,
+        roughness : 0.8,
+        roughnessMap : bamboo_roughness
     });
     const bamboo_branch = new THREE.CylinderGeometry(0.02,0.02,0.5,8);
 
@@ -78,7 +95,11 @@ export default function printTree(){
 
     const bamboo_meterial4 = new THREE.MeshStandardMaterial({
         color : 0x007200,
-        side : THREE.DoubleSide
+        side : THREE.DoubleSide,
+        map : leaf_baseColor,
+        roughness : 0.5,
+        displacementMap : leaf_height,
+        displacementScale : 0.5
     });
     const bamboo_leaf = new THREE.SphereGeometry(0.3,24,12,0,Math.PI/3); 
     const bamboo_leaf1 = new THREE.Mesh(bamboo_leaf, bamboo_meterial4);
