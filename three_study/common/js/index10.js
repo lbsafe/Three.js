@@ -53,9 +53,6 @@ if(WebGL.isWebGLAvailable()){
         displacementScale : 0.5
     });
 
-    // 여러개 재질 적용 정리하기
-
-
     const cube = new THREE.Mesh(geo, meterial);
     cube.position.set(0,1,0);
     scene.add(cube);

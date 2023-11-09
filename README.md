@@ -752,9 +752,9 @@ const meterial = new THREE.MeshStandardMaterial({
 
 * **map**
 
-    ```js
-    // 재질의 색상
+    - 재질의 색상 표현
 
+    ```js
     const material = new THREE.MeshStandardMaterial({
         map: basecolor
     });
