@@ -396,55 +396,161 @@ window.addEventListener('resize',()=>{
 
 **:one: Geometry - 형태**
 
-* 육면체
+* 육면체 - **BoxGeometry**
+
     ```js
     const geo1 = new THREE.BoxGeometry(1,1,1);
     // x, y, z의 평행 변의 길이
     const obj1 = new THREE.Mesh(geo1, material); 
     scene.add(obj1);
     ```
-* 원뿔
+
+* 원뿔 - **ConeGeometry**
+
     ```js
     const geo2 = new THREE.ConeGeometry(0.5,1,20);
     // 반지름, 높이, 분할면 갯수(기본 32)
     const obj2 = new THREE.Mesh(geo2, material);
     scene.add(obj2);
     ```
-* 원기둥
+
+* 원기둥 - **CylinderGeometry**
+
     ```js
     const geo3 = new THREE.CylinderGeometry(0.5,0.7,1, 10);
     // 윗면 반지름, 아랫면 반지름, 높이, 분할면 갯수
     const obj3 = new THREE.Mesh(geo3, material);
     scene.add(obj3);
     ```
-* 구
+
+* 구 - **SphereGeometry**
+
     ```js
     const geo4 = new THREE.SphereGeometry(1);
     // 반지름
     const obj4 = new THREE.Mesh(geo4, material);
     scene.add(obj4);
     ```
-* 평면
+
+* 평면 - **PlaneGeometry**
+
     ```js
     const geo5 = new THREE.PlaneGeometry(1,1);
     // 넓이, 높이
     const obj5 = new THREE.Mesh(geo5, material);
     scene.add(obj5);
     ```
-* 원
+
+* 원 - **CircleGeometry**
+
     ```js
     const geo6 = new THREE.CircleGeometry(1,32);
     // 반지름, 분할면 갯수
     const obj6 = new THREE.Mesh(geo6, material);
     scene.add(obj6);
     ```
-* 튜브
+
+* 튜브 - **TorusGeometry**
+
     ```js
     const geo7 = new THREE.TorusGeometry(0.5,0.1);
     // 중심부분 부터의 반지름, 튜브의 반경
     const obj7 = new THREE.Mesh(geo7, material);
     scene.add(obj7);
     ```
+
+* 모양 - **Shape**
+
+    * moveTo(x, y) : 펜을  x와 y 로 지정된 좌표로 옮김
+
+        ```js
+        shape.moveTo(1, 1);
+
+        x 좌표 1, y 좌표 1 지점으로 좌표 이동
+        ```
+
+    * bezierCurveTo() : 2개의 조절점을 이용하여 3차 곡선을 그림
+
+        ```js
+        shape.bezierCurveTo(x1, y1, x2, y2, x3, y3);
+                        
+                    x1, y1 : 변경될 첫 지점
+                    x2, y2 : 변경될 두번째 지점
+                    x3, y3 : 끝 나는 지점
+        ```
+
+    * lineTo(x, y) : 현재의 드로잉 위치에서 x와 y로 지정된 위치까지 선을 그림.
+
+        ```js
+        shape.lineTo(1, -1);
+        
+        x 좌표 1 에서 y 좌표 -1까지 선을 그림.
+        ```
+
+    * closePath() : 현재 점 위치와 시작점 위치를 직선으로 이어서 도형을 닫습니다. 이미 도형이 닫혔거나 한 점만 존재한다면, 이 메소드는 아무것도 하지 않는다.
+
+        ```js
+        shape.closePath();
+
+        도형을 닫음.
+        ```
+        
+    ```js
+    // Shape 클래스 생성
+    const shape = new THREE.Shape();
+    // x,y 좌표로 도형 정의
+    // (1,1) 로 이동 -> (1, -1)까지 선 그음 -> (-1, -1)까지 선 그음 -> (-1, 1)까지 선 그음
+
+    // ex) 사각형 그리기
+    shape.moveTo(1, 1);
+    shape.lineTo(1, -1);
+    shape.lineTo(-1, -1);
+    shape.lineTo(-1, 1);
+    // 도형을 닫으라고 지정
+    shape.closePath();
+
+    const geometry = new THREE.BufferGeometry();
+    const points = shape.getPoints();
+    geometry.setFromPoints(points);
+
+    const material = new THREE.MeshStandardMaterial({ color: 0xffff00 });
+    const line = new THREE.Line(geometry, material);
+
+    scene.add(line);
+    ```
+
+* 깊이값 부여 - **ExtrudeGeometry**
+
+    * 평면 shape에 깊이 값을 부여해주고, mesh의 윗면과 밑면을 비스듬하게 처리해준다.
+    * beveling: 비스듬하게 처리해주는 것
+
+    ```js
+    const shape = new THREE.Shape(); // Shape 클래스 생성
+  
+    // ex) 원 그리기
+    shape.moveTo(0, 1);
+    shape.bezierCurveTo(0.5, 1, 1, 0.5, 1, 0);
+    shape.bezierCurveTo(1, -0.5, 0.5, -1, 0, -1);
+    shape.bezierCurveTo(-0.5, -1, -1, -0.5, -1, 0);
+    shape.bezierCurveTo(-1, 0.5, -0.5, 1, 0, 1);
+
+    const extrudeSettings = {
+        steps: 1, //깊이 방향으로의 분할 수 default 1
+        depth: 0.2, //깊이 값 default 1
+        bevelEnabled: true, // beveling 처리 여부 default true
+        bevelThickness: 0.2, //beveling 두께값 default 6
+        bevelSize: 0.5, //shape의 외곽선으로부터 얼마나 멀리 beveling 할 것인지 => 커질수록 부푸는것 같음 default 2
+        bevelSegments: 2, //beveling 단계수
+    };
+    
+    const geometry = new THREE.ExtrudeGeometry( shape, extrudeSettings );
+    const material = new THREE.MeshStandardMaterial({ color: 0xffff00 });
+    const mesh = new THREE.Mesh( geometry, material) ;
+    
+    mesh.scale.set(0.5,0.5,0.5);
+    scene.add(mesh);
+    ```
+
 :link:[Three-Geometry][Three-Geometry] : Three.js Geometry 더보기
 
 [Three-Geometry]: https://threejs.org/docs/index.html#api/en/geometries/BoxGeometry "Three-Geometry"
