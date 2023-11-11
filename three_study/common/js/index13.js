@@ -12,7 +12,7 @@ if(WebGL.isWebGLAvailable()){
 
     // camera
     const camera = new THREE.PerspectiveCamera(50, window.innerWidth/window.innerHeight, 0.1, 1000);
-    camera.position.set(0,0,5);
+    camera.position.set(4,1,4);
     camera.lookAt(0,0,0);
 
     // randerer
