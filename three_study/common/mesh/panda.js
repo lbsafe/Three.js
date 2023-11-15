@@ -128,54 +128,130 @@ export default function printPanda(){
     panda.add(nose2);
 
     // eyes
-
     const eyes_pur = new THREE.Group();
 
     const eyes_pur_geo = new THREE.SphereGeometry(0.1, 32, 16, 0, Math.PI/2);
-    const eyes_pur_obj = new THREE.Mesh(eyes_pur_geo, panda_eyes_pur_material);
-    eyes_pur_obj.position.set(0.3,0.3,1.2);
-    eyes_pur_obj.scale.y = 2;
-    eyes_pur_obj.scale.x = 1;
-    eyes_pur_obj.rotation.y = THREE.MathUtils.degToRad(50);
-    eyes_pur_obj.rotation.z = THREE.MathUtils.degToRad(-20); 
-    eyes_pur.add(eyes_pur_obj);
 
-    const eyes_pur_obj2 = new THREE.Mesh(eyes_pur_geo, panda_eyes_pur_material);
-    eyes_pur_obj2.position.set(0.4,0.3,1.18);
-    eyes_pur_obj2.scale.y = 2;
-    eyes_pur_obj2.rotation.y = THREE.MathUtils.degToRad(50);
-    eyes_pur_obj2.rotation.z = THREE.MathUtils.degToRad(-20); 
-    eyes_pur.add(eyes_pur_obj2);
+    const eyes_pur_obj1_1 = new THREE.Mesh(eyes_pur_geo, panda_eyes_pur_material);
+    eyes_pur_obj1_1.position.set(0.4,0.3,1.18);
+    eyes_pur_obj1_1.scale.y = 2;
+    eyes_pur_obj1_1.rotation.y = THREE.MathUtils.degToRad(50);
+    eyes_pur_obj1_1.rotation.z = THREE.MathUtils.degToRad(-20); 
+    eyes_pur.add(eyes_pur_obj1_1);
 
-    const eyes_pur_obj3 = new THREE.Mesh(eyes_pur_geo, panda_eyes_pur_material);
-    eyes_pur_obj3.position.set(0.44,0.25,1.18);
-    eyes_pur_obj3.scale.y = 2;
-    eyes_pur_obj3.rotation.y = THREE.MathUtils.degToRad(50);
-    eyes_pur_obj3.rotation.z = THREE.MathUtils.degToRad(-20); 
-    eyes_pur.add(eyes_pur_obj3);
+    const eyes_pur_obj1_2 = new THREE.Mesh(eyes_pur_geo, panda_eyes_pur_material);
+    eyes_pur_obj1_2.position.set(0.44,0.25,1.18);
+    eyes_pur_obj1_2.scale.y = 2;
+    eyes_pur_obj1_2.rotation.y = THREE.MathUtils.degToRad(50);
+    eyes_pur_obj1_2.rotation.z = THREE.MathUtils.degToRad(-20); 
+    eyes_pur.add(eyes_pur_obj1_2);
 
-    const eyes_pur_obj4 = new THREE.Mesh(eyes_pur_geo, panda_eyes_pur_material);
-    eyes_pur_obj4.position.set(0.48,0.25,1.18);
-    eyes_pur_obj4.scale.y = 1.5;
-    eyes_pur_obj4.rotation.y = THREE.MathUtils.degToRad(100);
-    eyes_pur_obj4.rotation.z = THREE.MathUtils.degToRad(-20); 
-    eyes_pur.add(eyes_pur_obj4);
+    const eyes_pur_obj1_3 = new THREE.Mesh(eyes_pur_geo, panda_eyes_pur_material);
+    eyes_pur_obj1_3.position.set(0.48,0.25,1.18);
+    eyes_pur_obj1_3.scale.y = 1.5;
+    eyes_pur_obj1_3.rotation.y = THREE.MathUtils.degToRad(100);
+    eyes_pur_obj1_3.rotation.z = THREE.MathUtils.degToRad(-20); 
+    eyes_pur.add(eyes_pur_obj1_3);
 
+    const eyes_pur_obj1_4 = new THREE.Mesh(eyes_pur_geo, panda_eyes_pur_material);
+    eyes_pur_obj1_4.position.set(0.42,0.4,1.1);
+    eyes_pur_obj1_4.scale.y = 1.5;
+    eyes_pur_obj1_4.rotation.y = THREE.MathUtils.degToRad(15);
+    eyes_pur_obj1_4.rotation.z = THREE.MathUtils.degToRad(-10); 
+    eyes_pur.add(eyes_pur_obj1_4);
+
+    eyes_pur.position.set(-0.08,0.0,0.29);
+    eyes_pur.rotation.x = THREE.MathUtils.degToRad(25);
+    eyes_pur.rotation.y = THREE.MathUtils.degToRad(70);
+    eyes_pur.rotation.z = THREE.MathUtils.degToRad(3);
     panda.add(eyes_pur);
 
-    const eyes_pur_geo2 = new THREE.SphereGeometry(0.1, 32, 16, 0, Math.PI/2, 0, Math.PI/3);
-    const eyes_pur_obj5 = new THREE.Mesh(eyes_pur_geo2, panda_eyes_pur_material2);
-    eyes_pur_obj5.position.set(0.2,0.4,1.235);
-    eyes_pur_obj5.scale.y = 3;
-    eyes_pur_obj5.scale.x = 2.5;
-    eyes_pur_obj5.rotation.reorder('YZX');
-    eyes_pur_obj5.rotation.y = THREE.MathUtils.degToRad(-5); 
-    eyes_pur_obj5.rotation.z = THREE.MathUtils.degToRad(-180);
-    eyes_pur_obj5.rotation.x = THREE.MathUtils.degToRad(10);
+
+    const eyes_pur2 = new THREE.Group();
+
+    const eyes_pur_obj2_1 = new THREE.Mesh(eyes_pur_geo, panda_eyes_pur_material);
+    eyes_pur_obj2_1.position.set(1.16,0.3,0.38);
+    eyes_pur_obj2_1.scale.y = 2;
+    eyes_pur_obj2_1.rotation.x = THREE.MathUtils.degToRad(180);
+    eyes_pur_obj2_1.rotation.y = THREE.MathUtils.degToRad(130);
+    eyes_pur_obj2_1.rotation.z = THREE.MathUtils.degToRad(20); 
+    eyes_pur2.add(eyes_pur_obj2_1);
+    
+    const eyes_pur_obj2_2 = new THREE.Mesh(eyes_pur_geo, panda_eyes_pur_material);
+    eyes_pur_obj2_2.position.set(1.13,0.3,0.38);
+    eyes_pur_obj2_2.scale.y = 2;
+    eyes_pur_obj2_2.rotation.x = THREE.MathUtils.degToRad(180);
+    eyes_pur_obj2_2.rotation.y = THREE.MathUtils.degToRad(130);
+    eyes_pur_obj2_2.rotation.z = THREE.MathUtils.degToRad(20); 
+    eyes_pur2.add(eyes_pur_obj2_2);
+
+    const eyes_pur_obj2_3 = new THREE.Mesh(eyes_pur_geo, panda_eyes_pur_material);
+    eyes_pur_obj2_3.position.set(1.15,0.25,0.41);
+    eyes_pur_obj2_3.scale.y = 2;
+    eyes_pur_obj2_3.rotation.x = THREE.MathUtils.degToRad(180);
+    eyes_pur_obj2_3.rotation.y = THREE.MathUtils.degToRad(140);
+    eyes_pur_obj2_3.rotation.z = THREE.MathUtils.degToRad(20); 
+    eyes_pur2.add(eyes_pur_obj2_3);
+
+    const eyes_pur_obj2_4 = new THREE.Mesh(eyes_pur_geo, panda_eyes_pur_material);
+    eyes_pur_obj2_4.position.set(1.16,0.25,0.45);
+    eyes_pur_obj2_4.scale.y = 1.5;
+    eyes_pur_obj2_4.rotation.x = THREE.MathUtils.degToRad(180);
+    eyes_pur_obj2_4.rotation.y = THREE.MathUtils.degToRad(180);
+    eyes_pur_obj2_4.rotation.z = THREE.MathUtils.degToRad(20); 
+    eyes_pur2.add(eyes_pur_obj2_4);
+
+    const eyes_pur_obj2_5 = new THREE.Mesh(eyes_pur_geo, panda_eyes_pur_material);
+    eyes_pur_obj2_5.position.set(1.165,0.255,0.455);
+    eyes_pur_obj2_5.scale.y = 1.5;
+    eyes_pur_obj2_5.rotation.x = THREE.MathUtils.degToRad(180);
+    eyes_pur_obj2_5.rotation.y = THREE.MathUtils.degToRad(180);
+    eyes_pur_obj2_5.rotation.z = THREE.MathUtils.degToRad(20); 
+    eyes_pur2.add(eyes_pur_obj2_5);
+
+    const eyes_pur_obj2_6 = new THREE.Mesh(eyes_pur_geo, panda_eyes_pur_material);
+    eyes_pur_obj2_6.position.set(1.12,0.4,0.46);
+    eyes_pur_obj2_6.scale.y = 1.5;
+    eyes_pur_obj2_6.rotation.x = THREE.MathUtils.degToRad(185);
+    eyes_pur_obj2_6.rotation.y = THREE.MathUtils.degToRad(180);
+    eyes_pur_obj2_6.rotation.z = THREE.MathUtils.degToRad(20); 
+    eyes_pur2.add(eyes_pur_obj2_6);
+
+    const eyes_pur_obj2_7 = new THREE.Mesh(eyes_pur_geo, panda_eyes_pur_material);
+    eyes_pur_obj2_7.position.set(1.1,0.39,0.35);
+    eyes_pur_obj2_7.scale.y = 1.5;
+    eyes_pur.rotation.reorder('YXZ');
+    eyes_pur_obj2_7.rotation.x = THREE.MathUtils.degToRad(30);
+    eyes_pur_obj2_7.rotation.y = THREE.MathUtils.degToRad(180);
+    eyes_pur_obj2_7.rotation.z = THREE.MathUtils.degToRad(-10); 
+    eyes_pur2.add(eyes_pur_obj2_7);
+
+    eyes_pur2.position.set(0.29,-0.1,0);
+    eyes_pur2.rotation.reorder('YXZ');
+    eyes_pur2.rotation.x = THREE.MathUtils.degToRad(-30);
+    eyes_pur2.rotation.y = THREE.MathUtils.degToRad(-70);
+    eyes_pur2.rotation.z = THREE.MathUtils.degToRad(-5);
+    panda.add(eyes_pur2);
 
 
-    // const axesHelper2 = new THREE.AxesHelper(3);
-    // eyes_pur4.add(axesHelper2);
+    const eye_geo = new THREE.SphereGeometry(0.1,64,32);
+    const eye_material = new THREE.MeshPhysicalMaterial({
+        color: 0x000000,
+        clearcoat: 0.8,
+        clearcoatRoughness: 0.2 
+    });
+
+
+    const eye1 = new THREE.Mesh(eye_geo, eye_material);
+    eye1.position.set(0.54,0.4,1.26);
+    panda.add(eye1);
+
+    const eye2 = new THREE.Mesh(eye_geo, eye_material);
+    eye2.position.set(1.23,0.4,0.53);
+    panda.add(eye2);
+
+    const axesHelper2 = new THREE.AxesHelper(3);
+    eyes_pur_obj2_7.add(axesHelper2);
 
     // const axesHelper1 = new THREE.AxesHelper(3);
     // panda.add(axesHelper1);
