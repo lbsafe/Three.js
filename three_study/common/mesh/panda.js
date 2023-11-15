@@ -251,7 +251,7 @@ export default function printPanda(){
     panda.add(eye2);
 
     const axesHelper2 = new THREE.AxesHelper(3);
-    eyes_pur_obj2_7.add(axesHelper2);
+    // eyes_pur_obj2_7.add(axesHelper2);
 
     // const axesHelper1 = new THREE.AxesHelper(3);
     // panda.add(axesHelper1);
