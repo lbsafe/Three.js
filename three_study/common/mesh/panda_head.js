@@ -2,7 +2,7 @@ import * as THREE from "three";
 
 export default function printPanda(){
 
-    const panda = new THREE.Group();
+    const panda_head_group = new THREE.Group();
 
     // texture
     const loader = new THREE.TextureLoader();
@@ -61,7 +61,7 @@ export default function printPanda(){
     panda_head.scale.x = 1.2;
     panda_head.scale.y = 1.1;
     panda_head.scale.z = 1.2;
-    panda.add(panda_head);
+    panda_head_group.add(panda_head);
 
     const panda_head_geo2 = new THREE.SphereGeometry(1, 16, 8);
 
@@ -69,7 +69,7 @@ export default function printPanda(){
     panda_head2.position.set(0,0,0)
     panda_head2.rotation.x = Math.PI/2;
     panda_head2.scale.z = 1.1;
-    panda.add(panda_head2);
+    panda_head_group.add(panda_head2);
 
     // ear
     const panda_ear_geo = new THREE.CylinderGeometry(0.3,0.3,0.1,24);
@@ -79,7 +79,7 @@ export default function printPanda(){
     panda_ear.rotation.y = THREE.MathUtils.degToRad(10);
     panda_ear.rotation.z = THREE.MathUtils.degToRad(-45);
     panda_ear.scale.x = 1.2;
-    panda.add(panda_ear);
+    panda_head_group.add(panda_ear);
 
     const panda_ear2 = new THREE.Mesh(panda_ear_geo, panda_ear_material);
     panda_ear2.position.set(0.6,1.3,-0.6);
@@ -87,7 +87,7 @@ export default function printPanda(){
     panda_ear2.rotation.y = THREE.MathUtils.degToRad(10);
     panda_ear2.rotation.z = THREE.MathUtils.degToRad(45);
     panda_ear2.scale.x = 1.2;
-    panda.add(panda_ear2);
+    panda_head_group.add(panda_ear2);
 
     // mouse
     const mouse_geo = new THREE.TetrahedronGeometry(0.4,7);
@@ -96,7 +96,7 @@ export default function printPanda(){
     mouse.scale.x = 1.3;
     mouse.rotation.y = THREE.MathUtils.degToRad(-45);
     mouse.rotation.z = THREE.MathUtils.degToRad(-10);
-    panda.add(mouse);
+    panda_head_group.add(mouse);
 
     // nose
     const nose_loader = new THREE.TextureLoader();
@@ -117,7 +117,7 @@ export default function printPanda(){
     nose.scale.set(1,1,0.4);
     nose.rotation.x = THREE.MathUtils.degToRad(90);
     nose.rotation.z = THREE.MathUtils.degToRad(-45);
-    panda.add(nose);
+    panda_head_group.add(nose);
 
     const nose_geo2 = new THREE.CylinderGeometry(0.3, 0.3, 0.1,5);
     const nose2 = new THREE.Mesh(nose_geo2,nose_material);
@@ -125,7 +125,7 @@ export default function printPanda(){
     nose2.scale.set(1,1,0.4);
     nose2.rotation.x = THREE.MathUtils.degToRad(90);
     nose2.rotation.z = THREE.MathUtils.degToRad(-45);
-    panda.add(nose2);
+    panda_head_group.add(nose2);
 
     // eyes
     const eyes_pur = new THREE.Group();
@@ -164,7 +164,7 @@ export default function printPanda(){
     eyes_pur.rotation.x = THREE.MathUtils.degToRad(25);
     eyes_pur.rotation.y = THREE.MathUtils.degToRad(70);
     eyes_pur.rotation.z = THREE.MathUtils.degToRad(3);
-    panda.add(eyes_pur);
+    panda_head_group.add(eyes_pur);
 
 
     const eyes_pur2 = new THREE.Group();
@@ -231,8 +231,7 @@ export default function printPanda(){
     eyes_pur2.rotation.x = THREE.MathUtils.degToRad(-30);
     eyes_pur2.rotation.y = THREE.MathUtils.degToRad(-70);
     eyes_pur2.rotation.z = THREE.MathUtils.degToRad(-5);
-    panda.add(eyes_pur2);
-
+    panda_head_group.add(eyes_pur2);
 
     const eye_geo = new THREE.SphereGeometry(0.1,64,32);
     const eye_material = new THREE.MeshPhysicalMaterial({
@@ -241,14 +240,22 @@ export default function printPanda(){
         clearcoatRoughness: 0.2 
     });
 
-
     const eye1 = new THREE.Mesh(eye_geo, eye_material);
-    eye1.position.set(0.54,0.4,1.26);
-    panda.add(eye1);
+    eye1.position.set(0.58,0.43,1.23);
+    panda_head_group.add(eye1);
 
     const eye2 = new THREE.Mesh(eye_geo, eye_material);
-    eye2.position.set(1.23,0.4,0.53);
-    panda.add(eye2);
+    eye2.position.set(1.21,0.43,0.56);
+    panda_head_group.add(eye2);
+
+    // body
+    const body_geo1 = new THREE.SphereGeometry(1,64,32);
+    const body = new THREE.Mesh(body_geo1, panda_material);
+    body.position.set(0,1,0);
+    panda_head_group.add(body);
+
+
+
 
     const axesHelper2 = new THREE.AxesHelper(3);
     // eyes_pur_obj2_7.add(axesHelper2);
@@ -256,5 +263,5 @@ export default function printPanda(){
     // const axesHelper1 = new THREE.AxesHelper(3);
     // panda.add(axesHelper1);
 
-    return panda;
+    return panda_head_group;
 }

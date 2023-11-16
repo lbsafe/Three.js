@@ -3,7 +3,7 @@ import WebGL from "three/examples/jsm/capabilities/WebGL.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import printApple from "../mesh/apple.js"
 import printTree from "../mesh/bamboo.js";
-import printPanda from "../mesh/panda.js";
+import printPanda_head from "../mesh/panda_head.js";
 
 if(WebGL.isWebGLAvailable()){
     // scene
@@ -32,8 +32,8 @@ if(WebGL.isWebGLAvailable()){
 
     
     // 판다
-    const panda = printPanda();
-    scene.add(panda);
+    const panda_head = printPanda_head();
+    scene.add(panda_head);
  
 
     // OrbitControls
