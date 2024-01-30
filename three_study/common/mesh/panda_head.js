@@ -45,15 +45,6 @@ export default function printPanda(){
         displacementScale : 0.15
     });
 
-    const panda_eyes_pur_material2 = new THREE.MeshStandardMaterial({
-        color : 0xff0000,
-        normalMap : normal,
-        roughness : 1.2,
-        roughnessMap : roughness,
-        displacementMap : height,
-        displacementScale : 0.1
-    });
-
     // head
     const panda_head_geo = new THREE.SphereGeometry(1, 64, 32);
 
@@ -247,21 +238,6 @@ export default function printPanda(){
     const eye2 = new THREE.Mesh(eye_geo, eye_material);
     eye2.position.set(1.21,0.43,0.56);
     panda_head_group.add(eye2);
-
-    // body
-    const body_geo1 = new THREE.SphereGeometry(1,64,32);
-    const body = new THREE.Mesh(body_geo1, panda_material);
-    body.position.set(0,1,0);
-    panda_head_group.add(body);
-
-
-
-
-    const axesHelper2 = new THREE.AxesHelper(3);
-    // eyes_pur_obj2_7.add(axesHelper2);
-
-    // const axesHelper1 = new THREE.AxesHelper(3);
-    // panda.add(axesHelper1);
 
     return panda_head_group;
 }

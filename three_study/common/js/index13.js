@@ -4,6 +4,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import printApple from "../mesh/apple.js"
 import printTree from "../mesh/bamboo.js";
 import printPanda_head from "../mesh/panda_head.js";
+import printPanda_body from "../mesh/panda_body.js";
 
 if(WebGL.isWebGLAvailable()){
     // scene
@@ -12,7 +13,7 @@ if(WebGL.isWebGLAvailable()){
 
     // camera
     const camera = new THREE.PerspectiveCamera(50, window.innerWidth/window.innerHeight, 0.1, 1000);
-    camera.position.set(4,1,4);
+    camera.position.set(7,7,7);
     camera.lookAt(0,0,0);
 
     // randerer
@@ -30,10 +31,17 @@ if(WebGL.isWebGLAvailable()){
     scene.add(dlLight);
     dlLight.castShadow = true;
 
+    const ambientLight = new THREE.AmbientLight(0xfffff, 1); 
+    // scene.add(ambientLight);
+
     
     // 판다
     const panda_head = printPanda_head();
+    panda_head.position.set(0.4,2.8,0.4);
     scene.add(panda_head);
+
+    const panda_body = printPanda_body();
+    scene.add(panda_body);
  
 
     // OrbitControls
